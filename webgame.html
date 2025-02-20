@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Wars Web Game</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #000;
+        }
+        #gameCanvas {
+            border: 1px solid #fff;
+            background-image: url('https://www.solarsystemscope.com/textures/download/2k_stars.jpg');
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas" width="800" height="600"></canvas>
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+
+        const spaceship = new Image();
+        spaceship.src = 'https://www.pngall.com/wp-content/uploads/4/Star-Wars-PNG-Image.png'; // Replace with a Star Wars spaceship image URL
+
+        let x = canvas.width / 2;
+        let y = canvas.height / 2;
+        const spaceshipWidth = 50;
+        const spaceshipHeight = 50;
+        let dx = 2;
+        let dy = 2;
+
+        function drawSpaceship() {
+            ctx.drawImage(spaceship, x, y, spaceshipWidth, spaceshipHeight);
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawSpaceship();
+            if (x + dx > canvas.width - spaceshipWidth || x + dx < 0) {
+                dx = -dx;
+            }
+            if (y + dy > canvas.height - spaceshipHeight || y + dy < 0) {
+                dy = -dy;
+            }
+            x += dx;
+            y += dy;
+        }
+
+        spaceship.onload = function() {
+            setInterval(draw, 10);
+        };
+    </script>
+</body>
+</html>

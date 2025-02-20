@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Wars Random Quote Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #quote {
+            font-size: 24px;
+            margin: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Star Wars Random Quote Generator</h1>
+    <div id="quote">Click the button to get a quote!</div>
+    <button onclick="generateQuote()">Get Quote</button>
+
+    <script>
+        const quotes = [
+            "Do. Or do not. There is no try. - Yoda",
+            "I find your lack of faith disturbing. - Darth Vader",
+            "The Force will be with you. Always. - Obi-Wan Kenobi",
+            "I've got a bad feeling about this. - Various Characters",
+            "It's a trap! - Admiral Ackbar",
+            "Never tell me the odds! - Han Solo",
+            "In my experience, there is no such thing as luck. - Obi-Wan Kenobi",
+            "I am your father. - Darth Vader",
+            "Your focus determines your reality. - Qui-Gon Jinn",
+            "The Force is strong with this one. - Darth Vader"
+        ];
+
+        function generateQuote() {
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            document.getElementById('quote').innerText = quotes[randomIndex];
+        }
+    </script>
+</body>
+</html>
